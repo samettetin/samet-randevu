@@ -1,0 +1,29 @@
+<div class="mdrs-welcome-main">
+  <div class="mdrs-welcome-card">
+    <h1>MDRS'ye Hoş Geldiniz</h1>
+    <p>
+      <b>Merkezi Doktor Randevu Sistemi</b> üzerinden, dilediğiniz sağlık kuruluşundan <b>hızlı ve güvenli</b> randevu alabilirsiniz.<br>
+      Sistemi kullanmak için sağ üstteki <b>Randevu Al</b> butonunu veya panelinizi kullanabilirsiniz.
+    </p>
+    <!-- Sadece admin DEĞİLSE buton görünsün -->
+    <a
+      *ngIf="!isAdmin"
+      routerLink="/book-appointment"
+      class="randevu-btn home-btn"
+    >Randevu Al</a>
+    <div class="mdrs-info-row">
+      <div class="mdrs-info-card">
+        <span class="material-icons mdrs-info-icon">event_available</span>
+        Kolay Randevu
+      </div>
+      <div class="mdrs-info-card">
+        <span class="material-icons mdrs-info-icon">verified_user</span>
+        Güvenli Erişim
+      </div>
+      <div class="mdrs-info-card">
+        <span class="material-icons mdrs-info-icon">support_agent</span>
+        7/24 Destek
+      </div>
+    </div>
+  </div>
+</div>

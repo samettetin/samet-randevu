@@ -1,0 +1,63 @@
+<div class="appointments-main">
+
+  <!-- Yaklaşan randevu bildirimi -->
+  <div *ngIf="hasUpcomingAppointment" class="upcoming-alert">
+    <strong>⚠️ Randevunuz yaklaşıyor!</strong>
+  </div>
+
+  <div class="appointments-title">Randevularım</div>
+
+  <div class="appointment-list">
+    <div *ngFor="let app of myAppointments" class="appointment-card" [ngClass]="app.status">
+      <div class="doc-row">
+        <div class="doc-avatar-circle" [ngClass]="app.gender"></div>
+        <div class="doc-info">
+          <span class="doc-name">
+            Dr. {{ app.doctorFullname }}
+          </span>
+          <span class="doc-branch">
+            {{ app.specialty || 'Branş Bilgisi Yok' }} • {{ app.hospital || 'Hastane Bilgisi Yok' }}
+          </span>
+        </div>
+        <span class="badge" [ngClass]="app.status">
+          <ng-container [ngSwitch]="app.status">
+            <span *ngSwitchCase="'approved'">Onaylandı</span>
+            <span *ngSwitchCase="'rejected'">Reddedildi</span>
+            <span *ngSwitchCase="'pending'">Bekliyor</span>
+            <span *ngSwitchCase="'canceled'">İptal Edildi</span>
+          </ng-container>
+        </span>
+      </div>
+
+      <div class="app-details">
+        <span class="detail">
+          <i class="material-icons">calendar_today</i> {{ app.date || '-' }} {{ app.time || '' }}
+        </span>
+        <span class="detail">
+          <i class="material-icons">person</i> Hasta: {{ app.patientFullname }}
+        </span>
+      </div>
+
+      <div class="app-status-msg" [ngClass]="app.status">
+        <ng-container [ngSwitch]="app.status">
+          <span *ngSwitchCase="'approved'">
+            <i class="material-icons">check_circle</i> Randevunuz onaylandı.
+          </span>
+          <span *ngSwitchCase="'rejected'">
+            <i class="material-icons">cancel</i> Randevunuz onaylanmadı.
+          </span>
+          <span *ngSwitchCase="'pending'">
+            <i class="material-icons">hourglass_empty</i> Randevunuz onay bekliyor.
+          </span>
+          <span *ngSwitchCase="'canceled'">
+            <i class="material-icons">remove_circle</i> Randevu iptal edildi.
+          </span>
+        </ng-container>
+      </div>
+
+      <button *ngIf="app.status !== 'canceled'" (click)="cancel(app)" class="modern-btn danger">
+        Randevuyu İptal Et
+      </button>
+    </div>
+  </div>
+</div>

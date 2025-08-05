@@ -1,0 +1,42 @@
+<div class="provider-detail-card">
+  <div class="provider-info">
+    <img [src]="provider?.avatar || defaultAvatar" width="62" height="62" alt="avatar" />
+    <div>
+      <div style="font-size:20px; font-weight:600; margin-bottom:3px;">
+        {{ provider?.username }}
+      </div>
+      <div style="color:#6177c4;">{{ provider?.specialty }}</div>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" *ngIf="currentUser && currentUser.role === 'customer'" class="appt-form">
+    <label>Tarih Seç:</label>
+    <input type="date" [(ngModel)]="selectedDate" name="selectedDate" [min]="today" required />
+
+    <label>Saat Seç:</label>
+    <div class="slot-row">
+      <button type="button"
+              *ngFor="let slot of timeSlots"
+              [disabled]="!isSlotAvailable(slot) || !selectedDate"
+              [ngClass]="{active: selectedTime===slot}"
+              (click)="selectedTime = slot">
+        {{ slot }}
+      </button>
+    </div>
+
+    <label>Ek Not:</label>
+    <input type="text" [(ngModel)]="note" name="note" maxlength="40" placeholder="Varsa eklemek istedikleriniz..." />
+
+    <button type="submit" class="modern-btn" [disabled]="!selectedDate || !selectedTime">
+      <span class="material-icons" style="font-size:20px;vertical-align:-4px;">add_circle_outline</span>
+      Randevu Talep Et
+    </button>
+    <div class="msg" *ngIf="successMsg" style="color:#19bf5f">{{ successMsg }}</div>
+    <div class="msg" *ngIf="errorMsg" style="color:#eb3d3d">{{ errorMsg }}</div>
+  </form>
+
+  <div *ngIf="!currentUser || currentUser.role !== 'customer'" class="not-customer">
+    <span class="material-icons" style="font-size:22px;vertical-align:-5px;opacity:.68;">lock</span>
+    Randevu talebi için müşteri olarak giriş yapmalısınız.
+  </div>
+</div>

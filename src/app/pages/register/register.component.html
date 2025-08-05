@@ -1,0 +1,46 @@
+<div class="auth-panel">
+  <h2>Kayıt Ol</h2>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="register-form">
+    <label>Kullanıcı Adı:</label>
+    <input type="text" name="username" [(ngModel)]="username" required />
+
+    <label>Şifre:</label>
+    <input type="password" name="password" [(ngModel)]="password" required />
+
+    <!-- TC Kimlik Alanı -->
+    <label>TC Kimlik Numarası:</label>
+    <input
+      type="text"
+      name="tc"
+      [(ngModel)]="tc"
+      maxlength="11"
+      pattern="[0-9]*"
+      required
+      placeholder="11 haneli kimlik numarası"
+    />
+
+    <input type="hidden" name="role" [(ngModel)]="role" value="customer" />
+
+    <label>Avatar (Fotoğraf URL):</label>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <input type="text" name="avatar" [(ngModel)]="avatar" placeholder="Bir URL gir veya rastgele seç" style="flex:1;" />
+      <button type="button" (click)="randomAvatar()" class="mini-btn">Rastgele</button>
+    </div>
+    <div *ngIf="avatar" style="margin-top:10px;">
+      <img [src]="avatar" width="55" height="55" style="border-radius:50%; box-shadow:0 1px 7px #bfdcff;">
+    </div>
+
+    <button type="submit" class="modern-btn">Kayıt Ol</button>
+    <div style="color: red; margin-top:7px;" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </form>
+</div>
+
+<div *ngIf="errorMessage" class="alert-box alert-error">
+  <span class="material-icons">error_outline</span>
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="successMessage" class="alert-box alert-success">
+  <span class="material-icons">check_circle</span>
+  {{ successMessage }}
+</div>

@@ -1,0 +1,28 @@
+<div class="patients-page">
+  <h2>Kayıtlı Hastalar</h2>
+
+  <table class="modern-table" *ngIf="patients.length > 0">
+    <thead>
+      <tr>
+        <th>Ad Soyad</th>
+        <th>Kullanıcı Adı</th>
+        <th>TC</th>
+        <th>Doğum Tarihi</th>
+        <th>Kan Grubu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.fullname || '-' }}</td>
+        <td>{{ patient.username }}</td>
+        <td>{{ patient.tc }}</td>
+        <td>{{ patient.birthDate || '-' }}</td>
+        <td>{{ patient.bloodType || '-' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="patients.length === 0" class="empty-message">
+    Kayıtlı hasta bulunamadı.
+  </div>
+</div>

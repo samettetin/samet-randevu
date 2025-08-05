@@ -1,0 +1,43 @@
+<header class="header">
+  <div class="header-left">
+    <a routerLink="/" class="logo">Randevu Sistemi</a>
+  </div>
+  <div class="header-right">
+
+    <!-- Giriş yapılmamışsa -->
+    <ng-container *ngIf="!authService.isLoggedIn">
+      <a routerLink="/login" class="btn">Giriş Yap</a>
+      <a routerLink="/register" class="btn">Kayıt Ol</a>
+      <a href="#" (click)="handleBookAppointment($event)" class="btn">Randevu Al</a>
+    </ng-container>
+
+    <!-- Giriş yapılmışsa -->
+    <ng-container *ngIf="authService.isLoggedIn">
+      <span class="username">
+        Hoşgeldin, {{ authService.getCurrentUser()?.fullname || authService.getCurrentUser()?.username || 'Kullanıcı' }}
+      </span>
+
+      <!-- ADMIN -->
+      <ng-container *ngIf="currentRole === 'admin'">
+        <a routerLink="/admin-panel" class="btn">Admin Paneli</a>
+        <a routerLink="/patients" class="btn">Hastalar</a>
+        <a routerLink="/doctors" class="btn">Doktorlar</a>
+      </ng-container>
+
+      <!-- DOKTOR -->
+      <ng-container *ngIf="currentRole === 'provider'">
+        <a routerLink="/provider-panel" class="btn">Doktor Paneli</a>
+      </ng-container>
+
+      <!-- HASTA -->
+      <ng-container *ngIf="currentRole === 'customer'">
+        <a routerLink="/profile" class="btn">Profil</a>
+        <a routerLink="/my-appointments" class="btn">Randevularım</a>
+        <a routerLink="/book-appointment" class="btn">Randevu Al</a>
+      </ng-container>
+
+      <button (click)="logout()" class="btn">Çıkış Yap</button>
+    </ng-container>
+
+  </div>
+</header>

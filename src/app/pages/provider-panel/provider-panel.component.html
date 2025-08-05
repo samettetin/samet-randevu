@@ -1,0 +1,41 @@
+<h2 style="margin-bottom:28px;">Gelen Randevu Talepleri</h2>
+<ul class="card-list">
+  <li class="card" *ngFor="let app of pendingAppointments">
+    <div style="display:flex; align-items:center; gap:13px; margin-bottom:6px;">
+      <span class="material-icons" style="color:#a5b6e5;">person</span>
+      <b>{{ getCustomerName(app.customerId) }}</b>
+      <span class="status-badge badge-pending">Bekliyor</span>
+    </div>
+    <div><b>Tarih:</b> {{ app.date }} {{ app.time }}</div>
+    <div><b>Not:</b> {{ app.notes || 'Yok' }}</div>
+    <div style="margin-top:12px;">
+      <button class="btn-accept" (click)="approve(app)">
+        <span class="material-icons" style="font-size:18px;">check_circle</span> Onayla
+      </button>
+      <button class="btn-reject" (click)="reject(app)">
+        <span class="material-icons" style="font-size:18px;">cancel</span> Reddet
+      </button>
+    </div>
+  </li>
+</ul>
+
+<hr style="margin:36px 0 28px 0;"/>
+
+<h3>Geçmiş Randevular</h3>
+<ul class="card-list">
+  <li class="card" *ngFor="let app of otherAppointments">
+    <div style="display:flex; align-items:center; gap:13px; margin-bottom:6px;">
+      <span class="material-icons" style="color:#a5b6e5;">person</span>
+      <b>{{ getCustomerName(app.customerId) }}</b>
+      <span class="status-badge"
+            [ngClass]="{
+              'badge-accepted': app.status==='approved',
+              'badge-rejected': app.status==='rejected'
+            }">
+        {{ app.status==='approved' ? 'Onaylandı' : 'Reddedildi' }}
+      </span>
+    </div>
+    <div><b>Tarih:</b> {{ app.date }} {{ app.time }}</div>
+    <div><b>Not:</b> {{ app.notes || 'Yok' }}</div>
+  </li>
+</ul>

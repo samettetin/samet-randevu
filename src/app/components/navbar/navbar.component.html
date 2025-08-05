@@ -1,0 +1,27 @@
+<nav class="mdrs-navbar">
+  <a routerLink="/" class="navbar-brand">
+    <img src="assets/mdrs-logo.png" class="mdrs-logo" />
+    <span class="mdrs-title">MDRS</span>
+    <span class="mdrs-sub">Merkezi Doktor Randevu Sistemi</span>
+  </a>
+  <div class="navbar-actions">
+    <a routerLink="/book-appointment" class="randevu-btn">Randevu Al</a>
+    <a *ngIf="currentUser" routerLink="/my-appointments" class="panel-btn">Panelim</a>
+    
+    <!-- Bildirim çanı (sadece giriş yapanlar için) -->
+    <button *ngIf="currentUser && notificationCount > 0"
+            class="notify-btn"
+            (click)="showNotifications()"
+            aria-label="Yaklaşan randevu bildirimi">
+      <span class="material-icons">notifications</span>
+      <span class="notify-badge">{{ notificationCount }}</span>
+    </button>
+    
+    <a *ngIf="currentUser" routerLink="/profile" class="profile-link">
+      <img [src]="currentUser.avatar || defaultAvatar" class="navbar-avatar" />
+      {{ currentUser.username }}
+    </a>
+    <a *ngIf="currentUser" (click)="logout()" class="logout-link">Çıkış</a>
+    <a *ngIf="!currentUser" routerLink="/register" class="register-link">Kayıt Ol</a>
+  </div>
+</nav>

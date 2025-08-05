@@ -1,0 +1,42 @@
+<div class="profile-card" *ngIf="currentUser">
+  <h2>Hesabım</h2>
+  <form (ngSubmit)="saveProfile()" autocomplete="off" style="margin-bottom:25px;">
+    <!-- TC KİMLİK NUMARASI -->
+    <div class="profile-form-row">
+      <label>TC Kimlik No:</label>
+      <input type="text" [value]="currentUser.tc" readonly style="background:#f3f3f3;" />
+    </div>
+    <div class="profile-form-row">
+      <label>Doğum Tarihi:</label>
+      <input type="date" [(ngModel)]="birthDate" name="birthDate" />
+    </div>
+    <div class="profile-form-row">
+      <label>Kan Grubu:</label>
+      <select [(ngModel)]="bloodType" name="bloodType">
+        <option value="">Seçiniz</option>
+        <option *ngFor="let bg of ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', '0+', '0-']" [value]="bg">{{ bg }}</option>
+      </select>
+    </div>
+    <button class="modern-btn" type="submit">Kaydet</button>
+  </form>
+
+  <form (ngSubmit)="changePassword()" autocomplete="off">
+    <h3 style="margin-bottom:10px;">Şifre Değiştir</h3>
+    <div class="profile-form-row">
+      <label>Yeni Şifre:</label>
+      <input type="password" [(ngModel)]="newPassword" name="newPassword" />
+    </div>
+    <div class="profile-form-row">
+      <label>Yeni Şifre (Tekrar):</label>
+      <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" />
+    </div>
+    <button class="modern-btn" type="submit">Şifreyi Güncelle</button>
+  </form>
+
+  <div *ngIf="errorMsg" class="alert-box alert-error" style="margin-top:13px;">
+    <span class="material-icons">error_outline</span> {{ errorMsg }}
+  </div>
+  <div *ngIf="successMsg" class="alert-box alert-success" style="margin-top:13px;">
+    <span class="material-icons">check_circle</span> {{ successMsg }}
+  </div>
+</div>

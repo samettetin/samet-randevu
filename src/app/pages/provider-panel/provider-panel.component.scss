@@ -1,0 +1,53 @@
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+}
+.card {
+  background: #f6faff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #5c8be912;
+  padding: 22px 27px 16px 27px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: box-shadow 0.11s;
+  &:hover { box-shadow: 0 8px 32px #7bb0f433; }
+}
+
+.status-badge {
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 9px;
+  padding: 2.5px 11px;
+  margin-left: 16px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+.badge-pending { background: #ffe4a3; color: #d17c0d; }
+.badge-accepted { background: #d4f8e2; color: #18c36c; }
+.badge-rejected { background: #ffe0e5; color: #f85d86; }
+
+.btn-accept {
+  background: linear-gradient(90deg, #48e6ab 0%, #09c163 100%);
+  color: #fff; border: none; border-radius: 8px;
+  font-size: 15px; padding: 7px 18px; font-weight: 500;
+  margin-right: 12px;
+  display: inline-flex; align-items: center; gap: 5px;
+  box-shadow: 0 2px 8px #20de7a15;
+  transition: background 0.13s, transform 0.08s;
+  cursor: pointer;
+  &:hover { background: linear-gradient(90deg,#3fc389 0%,#07a74d 100%); transform: translateY(-1px);}
+}
+.btn-reject {
+  background: linear-gradient(90deg, #ff9f8c 0%, #e03a3a 100%);
+  color: #fff; border: none; border-radius: 8px;
+  font-size: 15px; padding: 7px 18px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 5px;
+  box-shadow: 0 2px 8px #e03a3a13;
+  transition: background 0.13s, transform 0.08s;
+  cursor: pointer;
+  &:hover { background: linear-gradient(90deg,#ff6b6b 0%,#b21919 100%); transform: translateY(-1px);}
+}

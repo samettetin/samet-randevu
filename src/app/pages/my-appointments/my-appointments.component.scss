@@ -1,0 +1,163 @@
+.appointments-main {
+  background: #eaf2fb;
+  min-height: calc(100vh - 56px);
+  padding-top: 44px;
+}
+
+.appointments-title {
+  font-size: 2rem;
+  color: #18428d;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.appointment-card {
+  background: #fff;
+  border-radius: 17px;
+  box-shadow: 0 2px 18px #18428d18;
+  padding: 22px 28px 14px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1.5px solid #e5eaf4;
+  gap: 9px;
+  transition: box-shadow 0.16s, border 0.13s;
+
+  &:hover {
+    box-shadow: 0 7px 36px #18428d21;
+    border-color: #98b8f9;
+  }
+}
+
+.doc-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 7px;
+}
+
+.doc-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.doc-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #18428d;
+}
+
+.doc-branch {
+  font-size: 0.99rem;
+  color: #6182bb;
+}
+
+.badge {
+  font-weight: 700;
+  border-radius: 16px;
+  padding: 7px 15px;
+  font-size: 1.01rem;
+  background: #f1f7ff;
+
+  &.approved { background: #d6ffe2; color: #19a354; }
+  &.rejected { background: #ffe3e3; color: #e53935; }
+  &.pending  { background: #f7f7a5; color: #c39211; }
+  &.canceled { background: #eeeefd; color: #524cbe; }
+}
+
+.app-details {
+  display: flex;
+  gap: 22px;
+  color: #455168;
+  font-size: 1.02rem;
+  margin-bottom: 3px;
+  align-items: center;
+}
+
+.detail i {
+  font-size: 1.19rem;
+  vertical-align: middle;
+  margin-right: 2px;
+  color: #18428d99;
+}
+
+.app-status-msg {
+  margin-top: 7px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  &.approved { color: #15a353; }
+  &.rejected { color: #c92828; }
+  &.pending  { color: #c39211; }
+  &.canceled { color: #524cbe; }
+}
+
+.app-status-msg i {
+  font-size: 1.15rem;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+// Fotoğraf yerine renkli daire avatar stilleri:
+.doc-avatar-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  font-size: 15px;
+  font-family: sans-serif;
+  user-select: none;
+
+  &.male {
+    background-color: #4da6ff;  /* Erkek doktor mavi */
+  }
+
+  &.female {
+    background-color: #ff7eb9;  /* Kadın doktor pembe */
+  }
+
+  &.other {
+    background-color: #c3c3c3;  /* Diğer / bilinmeyen */
+  }
+}
+
+/* Yeni: Randevu yaklaşma bildirimi */
+.upcoming-alert {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1.5px solid #ffeeba;
+  border-radius: 8px;
+  padding: 14px 20px;
+  max-width: 600px;
+  margin: 0 auto 24px auto;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-align: center;
+  animation: blinkAnimation 1.5s infinite;
+}
+
+@keyframes blinkAnimation {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

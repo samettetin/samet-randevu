@@ -1,0 +1,51 @@
+<h2>Admin Paneli</h2>
+
+<div class="admin-dashboard">
+  <div class="stat-box">
+    <span class="stat-label">Bugün Alınan Randevu</span>
+    <span class="stat-value">{{ todayAppointmentCount }}</span>
+  </div>
+  <div class="stat-box">
+    <span class="stat-label">Bugün Kayıt Olan Hasta</span>
+    <span class="stat-value">{{ todayNewPatientCount }}</span>
+  </div>
+  <div class="stat-box">
+    <span class="stat-label">Toplam Hasta</span>
+    <span class="stat-value">{{ totalPatientCount }}</span>
+  </div>
+  <div class="stat-box">
+    <span class="stat-label">Toplam Doktor</span>
+    <span class="stat-value">{{ totalDoctorCount }}</span>
+  </div>
+</div>
+
+<div style="margin-top: 35px;">
+  <h3>Onay Bekleyen Randevular</h3>
+
+  <div *ngIf="enrichedPendingAppointments.length > 0" class="pending-appointment-cards">
+    <div class="appointment-card" *ngFor="let app of enrichedPendingAppointments">
+      <div class="card-header">
+        <img [src]="app.doctorAvatar" class="doc-avatar" />
+        <div class="doc-info">
+          <div class="doc-name">Dr. {{ app.doctorName }}</div>
+          <div class="doc-branch">
+            {{ app.specialty || 'Branş Bilgisi Yok' }} • {{ app.hospital || 'Hastane Bilgisi Yok' }}
+          </div>
+          <div class="patient-name">Hasta: {{ app.patientName }}</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div><strong>Tarih:</strong> {{ app.date }}</div>
+        <div><strong>Saat:</strong> {{ app.time }}</div>
+      </div>
+      <div class="card-actions">
+        <button class="modern-btn" (click)="approveAppointment(app)">Onayla</button>
+        <button class="modern-btn danger" (click)="rejectAppointment(app)">Reddet</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="enrichedPendingAppointments.length === 0" style="margin-top:22px; color: #555;">
+    Onay bekleyen randevu yok.
+  </div>
+</div>

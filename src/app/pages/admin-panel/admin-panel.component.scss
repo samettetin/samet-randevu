@@ -1,0 +1,93 @@
+.admin-dashboard {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.stat-box {
+  background: #1e3a8a;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.stat-label {
+  font-size: 14px;
+  display: block;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.pending-appointment-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.appointment-card {
+  background: #f0f4ff;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.doc-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 2px solid #3b82f6;
+}
+
+.doc-info .doc-name {
+  font-weight: bold;
+}
+
+.card-body {
+  margin: 8px 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modern-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.modern-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.modern-btn.danger {
+  background-color: #dc2626;
+}
+
+.modern-btn.danger:hover {
+  background-color: #b91c1c;
+}

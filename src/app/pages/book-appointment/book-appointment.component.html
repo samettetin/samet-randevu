@@ -1,0 +1,53 @@
+<div class="book-panel">
+  <h2>Randevu Al</h2>
+
+  <div class="randevu-form-row">
+    <label>Hastane:</label>
+    <select [(ngModel)]="selectedHospital" (change)="selectHospital(selectedHospital)">
+      <option value="">Seçiniz</option>
+      <option *ngFor="let hospital of hospitals" [value]="hospital">{{ hospital }}</option>
+    </select>
+  </div>
+
+  <div class="randevu-form-row" *ngIf="selectedHospital">
+    <label>Branş:</label>
+    <select [(ngModel)]="selectedSpecialty" (change)="selectSpecialty(selectedSpecialty)">
+      <option value="">Seçiniz</option>
+      <option *ngFor="let sp of specialties" [value]="sp">{{ sp }}</option>
+    </select>
+  </div>
+
+  <div class="randevu-form-row" *ngIf="selectedSpecialty">
+    <label>Doktor:</label>
+    <select [(ngModel)]="selectedDoctorId">
+      <option value="">Seçiniz</option>
+      <option *ngFor="let doc of doctors" [value]="doc.id">
+        Dr. {{ doc.fullname || doc.username }}
+      </option>
+    </select>
+  </div>
+
+  <div class="randevu-form-row" *ngIf="selectedDoctorId">
+    <label>Tarih:</label>
+    <input type="date" [(ngModel)]="selectedDate" [min]="minDate" />
+  </div>
+
+  <div class="randevu-form-row" *ngIf="selectedDate">
+    <label>Saat:</label>
+    <select [(ngModel)]="selectedTime">
+      <option value="">Seçiniz</option>
+      <option *ngFor="let t of availableTimes" [value]="t">{{ t }}</option>
+    </select>
+  </div>
+
+  <button class="modern-btn" (click)="bookAppointment()">Randevu Al</button>
+
+  <div *ngIf="successMsg" class="alert-box alert-success" style="margin-top: 15px;">
+    <i class="material-icons" style="vertical-align: middle;">hourglass_empty</i>
+    <span style="margin-left: 6px;">{{ successMsg }}</span>
+  </div>
+
+  <div *ngIf="errorMsg" class="alert-box alert-error">
+    {{ errorMsg }}
+  </div>
+</div>

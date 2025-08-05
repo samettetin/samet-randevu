@@ -1,0 +1,60 @@
+.mdrs-welcome-main {
+  background: #eaf2fb;
+  min-height: calc(100vh - 56px);
+  padding-top: 64px;
+}
+.mdrs-welcome-card {
+  background: #fff;
+  max-width: 430px;
+  margin: 0 auto;
+  border-radius: 13px;
+  box-shadow: 0 2px 16px #c7d7f633;
+  padding: 38px 34px 26px 34px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mdrs-welcome-card h1 {
+  color: #18428d;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.mdrs-welcome-card p {
+  color: #1a2e5e;
+  font-size: 1.09rem;
+  margin-bottom: 27px;
+  line-height: 1.55;
+}
+.randevu-btn.home-btn {
+  margin: 0 auto 26px auto;
+  font-size: 1.07rem;
+  padding: 11px 34px;
+}
+.mdrs-info-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.mdrs-info-card {
+  background: #f3f6fa;
+  color: #18428d;
+  border-radius: 10px;
+  padding: 17px 15px;
+  font-weight: 700;
+  font-size: 1.04rem;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 118px;
+  justify-content: center;
+  box-shadow: 0 1px 7px #bdd6fb13;
+}
+.mdrs-info-icon {
+  font-size: 24px;
+  margin-right: 5px;
+  color: #18428d;
+}

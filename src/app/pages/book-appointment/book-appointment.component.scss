@@ -1,0 +1,46 @@
+.book-panel {
+  max-width: 440px;
+  margin: 44px auto 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 14px #dbeafe22;
+  padding: 33px 28px 24px 28px;
+}
+
+.randevu-form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #18428d;
+  margin-bottom: 4px;
+}
+
+select, input[type="date"] {
+  border: 1.2px solid #bdd6fb;
+  background: #f9fbff;
+  border-radius: 6px;
+  padding: 8px 13px;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.modern-btn {
+  background: #18428d;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 9px 0;
+  width: 100%;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.13s, transform 0.10s;
+  margin-top: 17px;
+  &:hover { background: #235abe; }
+}

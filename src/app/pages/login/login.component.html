@@ -1,0 +1,13 @@
+<div class="auth-panel">
+  <h2>Giriş Yap</h2>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="register-form">
+    <label>Kullanıcı Adı:</label>
+    <input type="text" name="username" [(ngModel)]="username" required />
+
+    <label>Şifre:</label>
+    <input type="password" name="password" [(ngModel)]="password" required />
+
+    <button type="submit" class="modern-btn">Giriş Yap</button>
+    <div style="color: red; margin-top:7px;" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </form>
+</div>

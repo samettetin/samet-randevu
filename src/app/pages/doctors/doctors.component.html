@@ -1,0 +1,26 @@
+<h2>Kayıtlı Doktorlar</h2>
+
+<table class="appointments-table" *ngIf="doctors.length > 0">
+  <thead>
+    <tr>
+      <th>Ad Soyad</th>
+      <th>Kullanıcı Adı</th>
+      <th>TC</th>
+      <th>Branş</th>
+      <th>Hastane</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of doctors">
+      <td>{{ doc.fullname || '-' }}</td>
+      <td>{{ doc.username }}</td>
+      <td>{{ doc.tc }}</td>
+      <td>{{ doc.specialty || '-' }}</td>
+      <td>{{ doc.hospital || '-' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="doctors.length === 0" style="margin-top:15px;">
+  Kayıtlı doktor bulunamadı.
+</div>
